@@ -6,7 +6,22 @@ namespace ChangeString
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello LP1!");
+            Console.Write("Insere uma string: ");
+            string s = Console.ReadLine();
+            Console.Write("Insere um caráter: ");
+            string b = Console.ReadLine();
+            char c= char.Parse(b);
+            for (int i = 0; i<s.Length; i++)
+            {
+                if (s[i]== c)
+                {
+                    Console.Write("x");
+                }
+                else
+                {
+                    Console.Write(s[i]);
+                }
+            }
         }
     }
 }
