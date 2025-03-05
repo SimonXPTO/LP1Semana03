@@ -46,6 +46,11 @@ namespace HeroPerk
                 Console.WriteLine("!Silent jumper!");
             }
 
+            if (!perk.HasFlag(Perks.AutoHeal))
+            {
+                Console.WriteLine("!Not gonna make it!");
+            }
+
         }
     }
 }
