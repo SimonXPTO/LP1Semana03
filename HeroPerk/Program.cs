@@ -17,35 +17,49 @@ namespace HeroPerk
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("No perks at all!");
+                Console.WriteLine("!No perks at all!");
                 return;
             }
             string arg=args[0];
+            int W = 0, D= 0, S= 0, A= 0;
             Perks perk = Perks.None;
 
             foreach (char c in arg)
             {
                 switch (c)
                 {
-                    case 'w': perk ^= Perks.WarpShift; break;
-                    case 'a': perk ^= Perks.Stealth; break;
-                    case 's': perk ^= Perks.AutoHeal; break;
-                    case 'd': perk ^= Perks.DoubleJump; break;
+                    case 'w': W++; break;
+                    case 'a': A++; break;
+                    case 's': S++; break;
+                    case 'd': D++; break;
                     default:
-                        Console.WriteLine("Unknown perk!");
+                        Console.WriteLine("!Unknown perk!");
                         return;
                 }
 
                 
             }
+            if (W % 2 == 1 ) perk |= Perks.WarpShift;
+            if (A % 2 == 1 ) perk |= Perks.AutoHeal;
+            if (S % 2 == 1 ) perk |= Perks.Stealth;
+            if (D % 2 == 1 ) perk |= Perks.DoubleJump;
+            
+            if (perk == Perks.None)
+            {
+                Console.WriteLine("!No perks at all!");
+                return;
+            }
 
-            Console.WriteLine($"{perk}");
+            if (perk != Perks.None)
+            {
+                Console.WriteLine($"{perk}");
+            }
 
             if (perk.HasFlag(Perks.Stealth) && perk.HasFlag(Perks.DoubleJump))
             {
                 Console.WriteLine("!Silent jumper!");
             }
-
+            
             if (!perk.HasFlag(Perks.AutoHeal))
             {
                 Console.WriteLine("!Not gonna make it!");
