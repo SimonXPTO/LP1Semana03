@@ -1,0 +1,51 @@
+﻿using System;
+
+namespace HeroPerk
+{
+    [Flags]
+    enum Perks
+    {
+        None = 0,
+        WarpShift = 1 << 0,
+        Stealth = 1 << 1,
+        AutoHeal = 1 << 2,
+        DoubleJump = 1 << 3
+    }
+    public class Perk
+    {
+        private static void Main(string[] args)
+        {
+            if (args.Length == 0)
+            {
+                Console.WriteLine("No perks at all!");
+                return;
+            }
+            string arg=args[0];
+            Perks perk = Perks.None;
+
+            foreach (char c in arg)
+            {
+                switch (c)
+                {
+                    case 'w': perk ^= Perks.WarpShift; break;
+                    case 'a': perk ^= Perks.Stealth; break;
+                    case 's': perk ^= Perks.AutoHeal; break;
+                    case 'd': perk ^= Perks.DoubleJump; break;
+                    default:
+                        Console.WriteLine("Unknown perk!");
+                        return;
+                }
+
+                
+            }
+
+            Console.WriteLine($"{perk}");
+
+            if (perk.HasFlag(Perks.Stealth) && perk.HasFlag(Perks.DoubleJump))
+            {
+                Console.WriteLine("!Silent jumper!");
+            }
+
+        }
+    }
+}
