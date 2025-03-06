@@ -44,7 +44,7 @@ namespace ArrayMul
             }
             foreach (float value in a)
             {
-                Console.WriteLine($"| {value:f2} |");
+                Console.WriteLine($"| {value,7:f2} |");
             }
         }
     }
